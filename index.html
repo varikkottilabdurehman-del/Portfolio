@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet"/>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ozhur Sector Sahityotsav'26</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lime: #c8f03e;
+    --teal: #1dcfb4;
+    --dark: #0d0d0d;
+    --off: #111;
+    --card: #161616;
+    --text: #e8e8e8;
+    --muted: #888;
+    --border: #2a2a2a;
+    --gold: #f0b429;
+    --silver: #a0aec0;
+    --bronze: #cd7f32;
+    --red: #FF2121;
+    --blue: #4d9fff;
+    --brown: #a65628;
+    --purple: #AF15D1;
+    --lemonteal: #B2F40B;
+    --darkorange: #F0850A; 
+    --pink: #FF00AE; 
+    --newbrown: #FFFF03;
+    --oggreen: #1EF505; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+ body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', 'Roboto'
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 5%;
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'poppins', sans-serif; font-weight: 800; font-size: 1.3rem;
+    letter-spacing: -0.02em;
+  }
+  .logo-blocks { display: flex; gap: 3px; }
+  .logo-block {
+    width: 10px; height: 28px; border-radius: 2px;
+  }
+  .logo-block:nth-child(1) { background: var(--lime); }
+  .logo-block:nth-child(2) { background: var(--teal); width: 14px; }
+  .logo-block:nth-child(3) { background: #2dd4bf; }
+
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.88rem; letter-spacing: 0.03em; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal); color: var(--dark) !important;
+    font-weight: 600; padding: 8px 18px; border-radius: 6px;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--lime) !important; transform: translateY(-1px); }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+    background: var(--off); border-bottom: 1px solid var(--border);
+    padding: 20px 5%;
+    flex-direction: column; gap: 16px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none; color: var(--text); font-size: 1rem;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(29,207,180,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(200,240,62,0.06) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(29,207,180,0.12); color: var(--teal);
+    border: 1px solid rgba(29,207,180,0.3);
+    font-size: 0.75
+    letter-spacing: 0.12em; padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 28px; position: relative; z-index: 1;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-title {
+    font-family: 'helvitica', sans-serif; font-weight: 800;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 0.95; letter-spacing: -0.04em;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-title .Montserrat { color: var(--teal); }
+  .hero-title .Montserrat  { color: var(--lime); }
+
+  .hero-year {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    color: transparent; -webkit-text-stroke: 2px var(--border);
+    position: relative; z-index: 1;
+  }
+
+  .hero-sub {
+    margin-top: 24px; max-width: 520px;
+    font-size: 1.05rem; color: var(--muted); line-height: 1.7;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    padding: 40px 24px;
+    border-top: 1px solid rgba(255,255,255,.05);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    margin-bottom: 48px;
+    /* ── FIX: bring stats above the hero grid ── */
+    position: relative;
+    z-index: 1;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 3rem; font-weight: 900;
+    background: linear-gradient(135deg, var(--lime), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat-label { font-size: .9rem; color: var(--muted); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 13px; gap: 2px
+  }
+  .stat-label1 { font-size: .9rem; color: var(--muted); letter-spacing: .07em; text-transform: uppercase; gap: 2px
+  }
+
+  .hero-meta {
+    margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-label { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+  .meta-value { font-family: 'Helvetica', sans-serif; font-weight: 700; font-size: 1rem; }
+
+  .hero-btns {
+    margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--teal); color: var(--dark);
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em;
+    padding: 14px 28px; border-radius: 8px; border: none; cursor: pointer;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--lime); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em;
+    padding: 14px 28px; border-radius: 8px;
+    border: 1px solid var(--border); cursor: pointer;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 20px 5%; }
+  .section-tag {
+    font-family: 'Times New Roman', monospace; font-size: 0.7rem;
+    letter-spacing: 0.15em; color: var(--teal); text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'poppins', sans-serif; font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.03em; margin-bottom: 16px;
+  }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* ─── SCOREBOARD ─── */
+  #scoreboard { background: var(--off); }
+
+  .score-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    flex-wrap: wrap; gap: 16px; margin-bottom: 40px;
+  }
+  .team-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600; /
+    font-size: 1.2rem; /
+}
+  .score-count {
+    font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--teal);
+    background: rgba(29,207,180,0.08); border: 1px solid rgba(29,207,180,0.2);
+    padding: 6px 14px; border-radius: 100px;
+  }
+
+  .team-cards { display: flex; flex-direction: column; gap: 16px; }
+
+  .team-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 28px;
+    display: flex; align-items: center; gap: 20px;
+    transition: transform 0.2s, border-color 0.2s;
+    position: relative; overflow: hidden;<i></i>
+  }
+  .team-card:hover { transform: translateY(-2px); border-color: #333; }
+  .team-card.rank-1 { border-color: rgba(240,180,41,0.3); }
+  .team-card.rank-1::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .team-card.rank-2 { border-color: rgba(160,174,192,0.3); }
+  .team-card.rank-2::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--silver), transparent);
+  }
+  .team-card.rank-3 { border-color: rgba(205,127,50,0.3); }
+  .team-card.rank-3::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--red), transparent);
+  }
+  .rank-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .team-info { flex: 1; min-width: 0; }
+  .team-name {
+    font-family: 'poppins', sans-serif; font-weight: 700; font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .team-card.rank-1 .team-name { color: var(--gold); }
+  .team-card.rank-2 .team-name { color: var(--blue); }
+  .team-card.rank-3 .team-name { color: var(--red); }
+
+  .score-bar-wrap {
+    height: 6px; background: rgba(255,255,255,0.06);
+    border-radius: 100px; overflow: hidden; margin-bottom: 8px;
+  }
+  .score-bar {
+    height: 100%; border-radius: 100px;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .team-card.rank-1 .score-bar { background: var(--teal); }
+  .team-card.rank-2 .score-bar { background: var(--blue); }
+  .team-card.rank-3 .score-bar { background: var(--red); }
+
+  .team-pos-label { font-size: 0.75rem; color: var(--muted); }
+
+  .team-score {
+    font-family: 'poppins', sans-serif; font-weight: 800;
+    font-size: 2.2rem; flex-shrink: 0;
+  }
+
+  /* ─── RESULTS ─── */
+  #results { background: var(--dark); }
+
+  .result-finder {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px; margin-bottom: 48px;
+  }
+  .result-finder h3 {
+    font-family: 'poppins', sans-serif; font-weight: 700; font-size: 1.4rem;
+    margin-bottom: 24px;
+  }
+  .finder-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .finder-select {
+    flex: 1; min-width: 200px;
+    background: var(--off); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    padding: 12px 16px; border-radius: 10px; cursor: pointer;
+    transition: border-color 0.2s; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 40px;
+  }
+  .finder-select:focus { outline: none; border-color: var(--teal); }
+
+  .result-output { margin-top: 0; }
+  .result-placeholder {
+    text-align: center; padding: 60px 20px;
+    color: var(--muted); font-size: 0.95rem;
+  }
+
+  .result-cards { display: flex; flex-direction: column; gap: 14px; }
+  .result-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 24px;
+    display: flex; align-items: center; gap: 16px;
+    animation: fadeUp 0.4s ease both;
+  }
+  .result-rank {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .result-rank.gold { background: rgba(240,180,41,0.15); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
+  .result-rank.silver { background: rgba(160,174,192,0.15); color: var(--silver); border: 1px solid rgba(160,174,192,0.3); }
+  .result-rank.bronze { background: rgba(205,127,50,0.15); color: var(--bronze); border: 1px solid rgba(205,127,50,0.3); }
+
+  .result-info { flex: 1; }
+  .result-name { font-weight: 300; font-size: 1rem; margin-bottom: 6px; }
+  .result-team {
+    display: inline-block; font-size: 0.72rem; font-family: 'Space Mono', monospace;
+    letter-spacing: 0.08em; background: rgba(29,207,180,0.08);
+    color: var(--teal); border: 1px solid rgba(29,207,180,0.2);
+    padding: 3px 10px; border-radius: 100px;
+  }
+
+  /* ─── PROGRAMMES ─── */
+  #programmes { background: var(--off); }
+  .prog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .prog-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .prog-card:hover { transform: translateY(-3px); border-color: rgba(29,207,180,0.3); }
+  .prog-cat {
+    font-size: 0.65rem; font-family: 'Space Mono', monospace;
+    letter-spacing: 0.12em; color: var(--teal); text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .prog-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+  .prog-info { font-size: 0.8rem; color: var(--muted); }
+
+  /* ─── TEAMS ─── */
+  #teams { background: var(--dark); }
+  .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .team-detail-card {
+    background: var(--card); border: 3px solid var(--border);
+    border-radius: 12px; padding: 24px; transition: all 0.2s ; margin-bottom: 10px ;
+  }
+  .team-detail-card:hover { transform: translateY(-3px); }
+  .td-name {
+    font-family: 'poppins', sans-serif; font-weight: 800; font-size: 2rem;
+    margin-bottom: 3px;
+  }
+  .td-sub { font-size: .9rem; font-family: 'poppins'; color: var(--muted); letter-spacing: .07em; text-transform: uppercase; margin-top: 8px; margin-bottom: 10px;}
+  .td-name.green { color: var(--teal); }
+  .td-name.blue { color: var(--blue); }
+  .td-name.red { color: var(--red); }
+  .td-name.lightgreen { color: var(--lightgreen); }
+  .td-name.lime { color: var(--lime); }
+  .td-name.purple { color: var(--purple); }
+  .td-count { font-size: 0.8rem; color: var(--muted); margin-bottom: 18px; gap: 2px }
+  .td-bar { height: 6px; border-radius: 100px; margin-bottom: 7px; }
+  .td-bar.green { background: var(--teal); }
+  .td-bar.blue { background: var(--blue); }
+  .td-bar.red { background: var(--red); }
+  .td-bar.lime { background: var(--lime); }
+  .td-bar.purple { background: var(--purple); }
+  .td-bar.lemonteal { background: var(--lemonteal); }
+  .td-bar.darkorange { background: var(--darkorange); }
+  .td-bar.pink { background: var(--pink); }
+  .td-bar.newbrown { background: var(--newbrown); }
+  .td-bar.oggreen { background: var(--oggreen); }
+  .td-score-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 4px; }
+  .td-score-val { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2rem; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--off); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--text); text-decoration: none;
+    background: var(--card); border: 1px solid var(--border);<link rel="stylesheet" href="">
+    border-radius: 10px; padding: 14px 18px; transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--teal); color: var(--teal); }
+  .contact-icon { font-size: 1.1rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .form-input {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    padding: 14px 18px; border-radius: 10px; transition: border-color 0.2s;
+  }
+  .form-input:focus { outline: none; border-color: var(--teal); }
+  .form-input::placeholder { color: var(--muted); }
+  textarea.form-input { resize: vertical; min-height: 120px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark); border-top: 1px solid var(--border);
+    padding: 40px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .footer-logo { font-family: 'poppins', sans-serif; font-weight: 800; font-size: 1.2rem; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-copy { color: var(--muted); font-size: 0.8rem; font-family: 'Space Mono', monospace; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* Confetti */
+  .confetti-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 200; display: none; }
+  .confetti-piece {
+    position: absolute; width: 10px; height: 10px; border-radius: 2px;
+    animation: confettiFall linear forwards;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .contact-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .hero-title { font-size: clamp(2.8rem, 14vw, 5rem); }
+    .score-header { flex-direction: column; align-items: flex-start; }
+    .team-score { font-size: 1.6rem; }
+    .stats-strip { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Ozhur Sector Sahityotsav'26</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#scoreboard">Team Points</a>
+      <a class="nav-link" href="#results">Results</a>
+      <a class="nav-link" href="#teams">Teams</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div style="font-family: 'Times New Roman',Times, serif;">
+  <div class="hero-tag"></fonts>✦ SSF OZHUR SECTOR ✦</div>
+  <h2 class="hero-title">
+    <div style="font-family: 'cooper Black', serif;">
+   <span"Montserrat">Sahityotsav</span></span><br>
+    <span><span class="Montserrat">'26</span></span>
+    <span class="hero-year"></span>
+  </h2>
+  <p class="hero-sub">A festival celebrating nuance, community, and culture. Two days of competitions, performances, and unforgettable moments.</p>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-num">02</div><div class="stat-label">DAYS</div></div>
+    <div class="stat"><div class="stat-num">07</div><div class="stat-label">VENUES</div></div>
+    <div class="stat"><div class="stat-num">09</div><div class="stat-label">UNITS</div></div>
+    <div class="stat"><div class="stat-num">300+</div><div class="stat-label">PARTICIPANTS</div></div>
+  </div>
+
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">Date</span>
+      <span class="meta-value">2026 MAY 09, 10</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Theme</span>
+      <span class="meta-value">LITERATURE IN DIGITAL ERA</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Location</span>
+      <span class="meta-value">THALAKKATTUR</span>
+    </div>
+  </div>
+
+  <div class="hero-btns">
+    <a href="#scoreboard" class="btn-primary">View Scoreboard</a>
+    <a href="#results" class="btn-outline">Browse Results</a>
+  </div>
+</section>
+
+<!-- SCOREBOARD -->
+<section id="scoreboard">
+  <div class="score-header">
+    <div>
+      <div class="section-tag">// Live Standings</div>
+      <h2 class="section-title">Team Scoreboard</h2>
+      <p class="section-sub">Live standings of Teams in SSF Ozhur Sector Sahityotsav'26</p>
+    </div>
+    <div class="score-count" id="resultCount">After 0 Results</div>
+  </div>
+  
+<div class="team-cards" id="teamCards">
+    <div class="team-card rank-1">
+      <div class="rank-icon">🏆</div>
+      <div class="team-info">
+        <div class="team-name">Ayyaya</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 1 • <span id="s1">0</span> total points</div>
+      </div>
+      <div class="team-score" id="score1">0</div>
+    </div>
+    <div class="team-card rank-2">
+      <div class="rank-icon">🥈</div>
+      <div class="team-info">
+        <div class="team-name">Churangara</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 2 • <span id="s2">0</span> total points</div>
+      </div>
+      <div class="team-score" id="score2">0</div>
+    </div>
+    <div class="team-card rank-3">
+      <div class="rank-icon">🥉</div>
+      <div class="team-info">
+        <div class="team-name">Korad</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 3 • <span id="s3">0</span> total points</div>
+      </div>
+      <div class="team-score" id="score3">0</div>
+    </div>
+    <div class="team-card" style="border-color:#222">
+      <div class="rank-icon">🏅</div>
+      <div class="team-info">
+        <div class="team-name" style="color:var(--lime)">Kuruvattisseri</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--blue)" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 4 • <span>0</span> total points</div>
+      </div>
+      <div class="team-score">0</div>
+    </div>
+    <div class="team-card" style="border-color:#222">
+      <div class="rank-icon">🏅</div>
+      <div class="team-info">
+        <div class="team-name" style="color:var(--lime)">Onakkad</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--blue)" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 5 • <span>0</span> total points</div>
+      </div>
+      <div class="team-score">0</div>
+    </div>
+    <div class="team-card" style="border-color:#222">
+      <div class="rank-icon">🏅</div>
+      <div class="team-info">
+        <div class="team-name" style="color:var(--lime)">Ozhur</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--lime)" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 6 • <span>0</span> total points</div>
+      </div>
+      <div class="team-score">0</div>
+    </div>
+    <div class="team-card" style="border-color:#222">
+      <div class="rank-icon">🏅</div>
+      <div class="team-info">
+        <div class="team-name" style="color:var(--lime)">Pulipparamb</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--lime)" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 7 • <span>0</span> total points</div>
+      </div>
+      <div class="team-score">0</div>
+    </div>
+    <div class="team-card" style="border-color:#222">
+      <div class="rank-icon">🏅</div>
+      <div class="team-info">
+        <div class="team-name" style="color:var(--lime)">Thalakkattur</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--lime)" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 8 • <span>0</span> total points</div>
+      </div>
+      <div class="team-score">0</div>
+    </div>
+    <div class="team-card" style="border-color:#222">
+      <div class="rank-icon">🏅</div>
+      <div class="team-info">
+        <div class="team-name" style="color:var(--lime)">Vellachal</div>
+        <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--lime)" data-width="0%"></div></div>
+        <div class="team-pos-label">Position 9 • <span>0</span> total points</div>
+      </div>
+      <div class="team-score">0</div>
+    </div>
+  </div>          
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-tag">// Winners</div>
+  <h2 class="section-title">Results</h2>
+  <p class="section-sub">Explore the achievements and celebrate the winners of SSF Ozhur Sector Sahityotsav'26</p>
+
+  <div class="result-finder">
+    <h3>Find Results</h3>
+    <div class="finder-row">
+      <select class="finder-select" id="catSelect" onchange="updateProgrammes()">
+        <option value="">Select a category</option>
+        <option value="Lower Primary">Lower Primary ( LP )</option>
+        <option value="Upper Primary">Upper Primary ( UP )</option>
+        <option value="High School">High School ( HS )</option>
+        <option value="Higher Secondary">Higher Secondary ( HSS )</option>
+        <option value="Junior">Junior ( JR )</option>
+        <option value="senior">Senior ( SR )</option>
+        <option value="general">General</option>
+      </select>
+      <select class="finder-select" id="progSelect" onchange="showResults()" disabled>
+        <option value="">Select a programme</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="result-output" id="resultOutput">
+    <div class="result-placeholder">Select a category and programme to view results</div>
+  </div>
+</section>
+
+<!-- TEAMS -->
+<section id="teams">
+  <div class="section-tag">// Competing Teams</div>
+  <h2 class="section-title">Teams</h2>
+  <p class="section-sub">Nine Units. One trophy. Endless spirit.</p>
+  </div>
+
+  <div
+    <div class="team-detail-card">
+      <div class="td-name green">Ayyaya</div>
+      <div class="stat-label1">Team manager : Sinan</div>
+       <div class="stat-label">46 Participants</div>
+       <div class="td-bar green" style="width:100%"></div>
+      
+    </div>     
+    <div class="team-detail-card">
+      <div class="td-name blue">Churangara</div>
+      <div class="stat-label1">Team Manager : Swalahudheen</div>
+      <div class="stat-label">46 Participants</div>
+      <div class="td-bar blue" style="width:100%"></div>
+   
+    </div>
+        <div class="team-detail-card">
+      <div class="td-name" style="color:#1EF505">Korad</div>
+      <div class="stat-label1">Team Manager : Name</div>
+      <div class="stat-label">40 Participants</div>
+      <div class="td-bar oggreen" style="width:100%"></div>
+      
+    </div>
+    <div class="team-detail-card">
+      <div class="td-name purple">Kuruvattisseri</div>
+      <div class="stat-label1">Team Manager : Name</div>
+      <div class="stat-label">60 Participants</div>
+      <div class="td-bar purple" style="width:100%"></div>
+     
+    </div>
+    <div class="team-detail-card">
+      <div class="td-name" style="color:#B2F40B;">Onakkad</div>
+      <div class="stat-label1">Team Manager : Name</div>
+      <div class="stat-label">81 Participants</div>
+      <div class="td-bar lemonteal" style="width:100%"></div>
+      
+    </div>
+    <div class="team-detail-card">
+      <div class="td-name" style="color:#F0850A;">Ozhur</div>
+      <div class="stat-label1">Team Manager : Name</div>
+      <div class="stat-label">90 Participants</div>
+      <div class="td-bar darkorange" style="width:100%;"></div>
+      
+    </div>
+    <div class="team-detail-card">
+      <div class="td-name" style="color:#FF00AE">Pulipparamb</div>
+      <div class="stat-label1">Team Manager :Name</div>
+      <div class="stat-label">50 Participants</div>
+      <div class="td-bar pink" style="width:100%"></div>
+      
+    </div>
+    <div class="team-detail-card">
+      <div class="td-name" style="color:#FFFF03">Thalakkattur</div>
+      <div class="stat-label1">Team Manager : Sabith</div>
+      <div class="stat-label">67 Participants</div>
+      <div class="td-bar newbrown" style="width:100%"></div>
+      
+    </div>
+    <div class="team-detail-card">
+      <div class="td-name" style="color:#FF2121">Vellachal</div>
+      <div class="stat-label1">Team manager : Name</div>
+      <div class="stat-label">50 Participants</div>
+      <div class="td-bar red" style="width:100%"></div>
+      
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">// Get In Touch</div>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Have questions about the event or results? Reach out to the organizing committee.</p>
+      <div class="contact-links">
+        <a href="mailto:ssfthalakkatturunit@gmail.com" class="contact-link">
+          <span class="contact-icon">✉</span>
+          <span>ssfthalakkatturunit@gmail.com</span>
+        </a>
+        <a href="tel:+919207343033" class="contact-link">
+          <span class="contact-icon">📞</span>
+          <span>+91 9207343033</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <input type="text" class="form-input" placeholder="Your name">
+      <input type="email" class="form-input" placeholder="Email address">
+      <textarea class="form-input" placeholder="Your message"></textarea>
+      <button class="btn-primary" onclick="alert('Message sent! We will get back to you soon.')">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Sahityotsav'26</div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#results">Results</a>
+    <a href="#teams">Teams</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Ozhur Sector Sahityotsav. All rights reserved.</div>
+</footer>
+
+<!-- CONFETTI -->
+<div class="confetti-wrap" id="confetti"></div>
+
+<script>
+// ── NAV ──
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ── SCOREBOARD BARS ──
+function animateBars() {
+  document.querySelectorAll('.score-bar[data-width]').forEach(bar => {
+    setTimeout(() => { bar.style.width = bar.dataset.width; }, 300);
+  });
+}
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { animateBars(); countUp(); obs.disconnect(); }
+  });
+}, { threshold: 0.3 });
+obs.observe(document.getElementById('scoreboard'));
+
+function countUp() {
+  document.getElementById('resultCount').textContent = "After 0 Results";
+  launchConfetti();
+}
+
+// ── RESULTS DATA ──
+const resultsData = {
+  junior: {
+    'Quranic Oration Mal': [
+      { rank: 1, name: 'Muhammad Savad', team: 'Pesh Pulse' },
+      { rank: 2, name: 'Mohammed Muzzammil', team: 'Zabar Blaze' },
+      { rank: 3, name: 'Muhammed Bakir T A', team: 'Pesh Pulse' },
+    ],
+    'Public Talk Eng': [
+      { rank: 1, name: 'Fatima Zara', team: 'Zer Zenith' },
+      { rank: 2, name: 'Ali Hassan', team: 'Nova Spark' },
+      { rank: 3, name: 'Aisha Noor', team: 'Zabar Blaze' },
+    ],
+    'Elocution Malayalam': [
+      { rank: 1, name: 'Rahul Krishna', team: 'Nova Spark' },
+      { rank: 2, name: 'Arjun Dev', team: 'Pesh Pulse' },
+      { rank: 3, name: 'Meera Pillai', team: 'Zer Zenith' },
+    ],
+    'Thaqreer Urdu': [
+      { rank: 1, name: 'Umar Farooque', team: 'Zabar Blaze' },
+      { rank: 2, name: 'Ibrahim Khalil', team: 'Pesh Pulse' },
+      { rank: 3, name: 'Yasir Arafat', team: 'Zer Zenith' },
+    ],
+  },
+  senior: {
+    'Pros & Cons English': [
+      { rank: 1, name: 'Sana Sheikh', team: 'Zer Zenith' },
+      { rank: 2, name: 'Faisal Rashid', team: 'Pesh Pulse' },
+      { rank: 3, name: 'Layla Ahmed', team: 'Nova Spark' },
+    ],
+    'Live Extempore Arabic': [
+      { rank: 1, name: 'Omar Abdullah', team: 'Pesh Pulse' },
+      { rank: 2, name: 'Khalid Mansoor', team: 'Zer Zenith' },
+      { rank: 3, name: 'Tariq Hussain', team: 'Zabar Blaze' },
+    ],
+    'Live Translation Arb-Eng': [
+      { rank: 1, name: 'Nadia Rahman', team: 'Nova Spark' },
+      { rank: 2, name: 'Zaid Al-Farsi', team: 'Zabar Blaze' },
+      { rank: 3, name: 'Hana Khalil', team: 'Pesh Pulse' },
+    ],
+  },
+  general: {
+    "Qira'ath": [
+      { rank: 1, name: 'Abdul Aziz', team: 'Pesh Pulse' },
+      { rank: 2, name: 'Bilal Ahmed', team: 'Zer Zenith' },
+      { rank: 3, name: 'Yusuf Hamdan', team: 'Nova Spark' },
+    ],
+    'Thahfeez A': [
+      { rank: 1, name: 'Hamid Karimi', team: 'Zabar Blaze' },
+      { rank: 2, name: 'Saad Imran', team: 'Pesh Pulse' },
+      { rank: 3, name: 'Ameen Qasim', team: 'Zer Zenith' },
+    ],
+    'Calligraphy': [
+      { rank: 1, name: 'Leena Bint', team: 'Nova Spark' },
+      { rank: 2, name: 'Sara Yousef', team: 'Pesh Pulse' },
+      { rank: 3, name: 'Dina Al-Mutairi', team: 'Zabar Blaze' },
+    ],
+  },
+  'Higher Secondary': {
+    'Kithabic Quiz': [
+      { rank: 1, name: 'Amir Shah', team: 'Zer Zenith' },
+      { rank: 2, name: 'Rayan Malik', team: 'Nova Spark' },
+      { rank: 3, name: 'Zara Qureshi', team: 'Pesh Pulse' },
+    ],
+    'Mappilappattu': [
+      { rank: 1, name: 'Jasim Abdul', team: 'Zabar Blaze' },
+      { rank: 2, name: 'Rifa Noor', team: 'Zer Zenith' },
+      { rank: 3, name: 'Faris Basheer', team: 'Pesh Pulse' },
+    ],
+  },
+};
+
+const programmes = {
+  general: ["Qira'ath", 'Thahfeez A', 'Calligraphy'],
+  senior: ['Pros & Cons English', 'Live Extempore Arabic', 'Live Translation Arb-Eng'],
+  junior: ['Quranic Oration Mal', 'Public Talk Eng', 'Elocution Malayalam', 'Thaqreer Urdu'],
+  'Higher Secondary': ['Kithabic Quiz', 'Mappilappattu'],
+};
+
+function updateProgrammes() {
+  const cat = document.getElementById('catSelect').value;
+  const progSel = document.getElementById('progSelect');
+  progSel.innerHTML = '<option value="">Select a programme</option>';
+  document.getElementById('resultOutput').innerHTML = '<div class="result-placeholder">Select a category and programme to view results</div>';
+  if (cat && programmes[cat]) {
+    programmes[cat].forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p; opt.textContent = p;
+      progSel.appendChild(opt);
+    });
+    progSel.disabled = false;
+  } else {
+    progSel.disabled = true;
+  }
+}
+
+function showResults() {
+  const cat = document.getElementById('catSelect').value;
+  const prog = document.getElementById('progSelect').value;
+  const output = document.getElementById('resultOutput');
+  if (!cat || !prog) {
+    output.innerHTML = '<div class="result-placeholder">Select a category and programme to view results</div>';
+    return;
+  }
+  const data = resultsData[cat] && resultsData[cat][prog];
+  if (!data) {
+    output.innerHTML = '<div class="result-placeholder">No results available yet</div>';
+    return;
+  }
+  const rankClass = ['gold','silver','bronze'];
+  output.innerHTML = `
+    <div style="margin-bottom:16px">
+      <div class="section-tag">// ${cat.toUpperCase()}</div>
+      <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:24px">${prog}</h3>
+    </div>
+    <div class="result-cards">
+      ${data.map((r,i) => `
+        <div class="result-card" style="animation-delay:${i*0.1}s">
+          <div class="result-rank ${rankClass[i]}">${r.rank}</div>
+          <div class="result-info">
+            <div class="result-name">${r.name}</div>
+            <span class="result-team">${r.team}</span>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ── CONFETTI ──
+function launchConfetti() {
+  const wrap = document.getElementById('confetti');
+  wrap.style.display = 'block';
+  const colors = ['#1dcfb4','#c8f03e','#f0b429','#ff4d4d','#4d9fff','#fff'];
+  for (let i = 0; i < 80; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.top = '-10px';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.width = (Math.random() * 8 + 4) + 'px';
+    el.style.height = (Math.random() * 8 + 4) + 'px';
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    el.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    el.style.animationDelay = (Math.random() * 2) + 's';
+    wrap.appendChild(el);
+  }
+  setTimeout(() => { wrap.style.display = 'none'; wrap.innerHTML = ''; }, 5000);
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
