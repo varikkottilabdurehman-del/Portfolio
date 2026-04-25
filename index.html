@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet"/>
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -124,8 +124,8 @@
     display: inline-block;
     background: rgba(29,207,180,0.12); color: var(--teal);
     border: 1px solid rgba(29,207,180,0.3);
-    font-size: 0.75
-    letter-spacing: 0.12em; padding: 6px 14px; border-radius: 100px;
+    font-size:.90rem;
+    letter-spacing: 0.1em; padding:8px; 4px; border-radius: 100px;
     margin-bottom: 28px; position: relative; z-index: 1;
     animation: fadeUp 0.6s ease both;
   }
@@ -148,24 +148,24 @@
   }
 
   .hero-sub {
-    margin-top: 24px; max-width: 520px;
+    margin-top: 24px; max-width: 900px;
     font-size: 1.05rem; color: var(--muted); line-height: 1.7;
     position: relative; z-index: 1;
     animation: fadeUp 0.6s 0.2s ease both;
   }
 
   /* ── STATS STRIP ── */
+  
   .stats-strip {
-    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
     padding: 10px; 24px;
     margin-top: 130px;
-    border-top: 60px;
+    border-top: 40px;
     border-bottom: 0px;
-    margin-bottom:160px;
-    line-height: 1.2;
+    margin-bottom:150px;
+    line-height: 1.2;    
     /* ── FIX: bring stats above the hero grid ── */
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
   }
   .stat { text-align: center; }
   .stat-num {
@@ -173,29 +173,35 @@
     font-size: 3rem; font-weight: 900;
     background: linear-gradient(135deg, var(--lime), var(--teal));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+  .stat-label { font-size: 1rem; color: var(--white);
+   letter-spacing: .07em; 
+   text-transform: uppercase; 
+   margin-bottom: 3px;
+   line-height:1.2;
   }
-  .stat-label { font-size:1rem; color: var(--White); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 1px; gap: 1px;
+   .stat-label1 { font-size:.9rem; color: var(--white); letter-spacing: .07em; text-transform: uppercase; margin-bottom:1px; gap: 1px;
   }
-.stat-label1 { font-size: .9rem; color: var(--White); letter-spacing: .07em; text-transform: uppercase; gap: 2px
-  }
-
   .hero-meta {
-    margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap;
+    margin-top: 5px;
+    border-top: 10;
     position: relative; z-index: 1;
     animation: fadeUp 0.6s 0.3s ease both;
   }
-  .meta-item { display: flex; flex-direction: column; gap: 4px; }
-  .meta-label { font-size: 1.1rem; letter-spacing: 0.1em; color: var(--lime); text-transform: uppercase; }
-  .meta-value { font-family: 'Helvetica', sans-serif; font-weight: 900; font-size: 1.5rem; }
+  .meta-item { 
+  display: flex; flex-direction: column;  }
+  .meta-label { font-size:1.1rem; letter-spacing: 0.1em; color: var(--lime); text-transform: uppercase; }
+  .meta-value { font-family: 'Helvetica', sans-serif; font-weight: 900; font-size: 1.5rem;
+     }
 
-  .hero-btns {
+.hero-btns {
     margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap;
     position: relative; z-index: 1;
     animation: fadeUp 0.6s 0.4s ease both;
   }
   .btn-primary {
     background: var(--teal); color: var(--dark);
-    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em;
+    font-weight: 700; font-size:.9rem; letter-spacing: 0.02em;
     padding: 14px 28px; border-radius: 8px; border: none; cursor: pointer;
     text-decoration: none; transition: all 0.2s; display: inline-block;
   }
@@ -219,9 +225,9 @@
   .section-title {
     font-family: 'poppins', sans-serif; font-weight: 800;
     font-size: clamp(2rem, 5vw, 3.5rem);
-    letter-spacing: -0.03em; margin-bottom: 16px;
+    letter-spacing: -0.03em; margin-bottom: 1px;
   }
-  .section-sub { color: var(--muted); font-size: 1rem; max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 560px; line-height: 1.7; margin-bottom: 25px; }
 
   /* ─── SCOREBOARD ─── */
   #scoreboard { background: var(--off); }
@@ -388,7 +394,7 @@
   .td-name.lime { color: var(--lime); }
   .td-name.purple { color: var(--purple); }
   .td-count { font-size: 0.8rem; color: var(--muted); margin-bottom: 18px; gap: 2px }
-  .td-bar { height: 6px; border-radius: 100px; margin-bottom: 7px; margin-top:1.1rem;}
+  .td-bar { height: 6px; border-radius: 100px; margin-bottom: 7px; margin-top:1.1rem; }
   .td-bar.green { background: var(--teal); }
   .td-bar.blue { background: var(--blue); }
   .td-bar.red { background: var(--red); }
@@ -503,19 +509,16 @@
 
   <!-- STATS -->
   <div class="stats-strip">
-    <div class="stat"><div class="stat-num">02</div><div class="stat-label">DAYS</div></div>
-    <div class="stat"><div class="stat-num">07</div><div class="stat-label">VENUES</div></div>
-    <div class="stat"><div class="stat-num">09</div><div class="stat-label">UNITS</div></div>
-    <div class="stat"><div class="stat-num">140+</div><div class="stat-label">COMPETITIONS</div></div>
-    <div class="stat"><div class="stat-num">300+</div><div class="stat-label">PARTICIPANTS</div></div>
-  </div>
-
-  <div class="hero-meta">
+    <div class="stat"><div class="stat-num" data-target="2" data-suffix="">02</div><div class="stat-label">DAYS</div></div>
+    <div class="stat"><div class="stat-num" data-target="7" data-suffix="">07</div><div class="stat-label">VENUES</div></div>
+    <div class="stat"><div class="stat-num" data-target="9" data-suffix="">09</div><div class="stat-label">UNITS</div></div>
+    <div class="stat"><div class="stat-num" data-target="140" data-suffix="+">140+</div><div class="stat-label">COMPETITIONS</div></div>
+    <div class="stat"><div class="stat-num" data-target="300" data-suffix="+">300+</div><div class="stat-label">PARTICIPANTS</div></div>
+      </div>
     <div class="meta-item">
       <span class="meta-label">Date</span>
       <span class="meta-value">2026 MAY 16, 17</span>
-   </div>
-      </div>
+    </div>
     <div class="meta-item">
       <span class="meta-label">Location</span>
       <span class="meta-value">THALAKKATTUR</span>
@@ -524,9 +527,6 @@
       <span class="meta-label">Theme</span>
       <span class="meta-value">LITERATURE IN DIGITAL ERA</span>
     </div>
-    </div>
-  </div>
-
   <div class="hero-btns">
     <a href="#scoreboard" class="btn-primary">View Scoreboard</a>
     <a href="#results" class="btn-outline">Browse Results</a>
@@ -543,7 +543,7 @@
     </div>
     <div class="score-count" id="resultCount">After 0 Results</div>
   </div>
-  
+
 <div class="team-cards" id="teamCards">
     <div class="team-card rank-1">
       <div class="rank-icon">🏆</div>
@@ -672,63 +672,63 @@
       <div class="stat-label1">Team manager : Sinan</div>
        <div class="stat-label">46 Participants</div>
        <div class="td-bar green" style="width:100%"></div>
-      
+
     </div>     
     <div class="team-detail-card">
       <div class="td-name blue">Churangara</div>
       <div class="stat-label1">Team Manager : Swalahudheen</div>
       <div class="stat-label">46 Participants</div>
       <div class="td-bar blue" style="width:100%"></div>
-   
+
     </div>
         <div class="team-detail-card">
       <div class="td-name" style="color:#1EF505">Korad</div>
       <div class="stat-label1">Team Manager : Name</div>
       <div class="stat-label">40 Participants</div>
       <div class="td-bar oggreen" style="width:100%"></div>
-      
+
     </div>
     <div class="team-detail-card">
       <div class="td-name purple">Kuruvattisseri</div>
       <div class="stat-label1">Team Manager : Name</div>
       <div class="stat-label">60 Participants</div>
       <div class="td-bar purple" style="width:100%"></div>
-     
+
     </div>
     <div class="team-detail-card">
       <div class="td-name" style="color:#B2F40B;">Onakkad</div>
       <div class="stat-label1">Team Manager : Name</div>
       <div class="stat-label">81 Participants</div>
       <div class="td-bar lemonteal" style="width:100%"></div>
-      
+
     </div>
     <div class="team-detail-card">
       <div class="td-name" style="color:#F0850A;">Ozhur</div>
       <div class="stat-label1">Team Manager : Name</div>
       <div class="stat-label">90 Participants</div>
       <div class="td-bar darkorange" style="width:100%;"></div>
-      
+
     </div>
     <div class="team-detail-card">
       <div class="td-name" style="color:#FF00AE">Pulipparamb</div>
       <div class="stat-label1">Team Manager :Name</div>
       <div class="stat-label">50 Participants</div>
       <div class="td-bar pink" style="width:100%"></div>
-      
+
     </div>
     <div class="team-detail-card">
       <div class="td-name" style="color:#FFFF03">Thalakkattur</div>
       <div class="stat-label1">Team Manager : Sabith</div>
       <div class="stat-label">67 Participants</div>
       <div class="td-bar newbrown" style="width:100%"></div>
-      
+
     </div>
     <div class="team-detail-card">
       <div class="td-name" style="color:#FF2121">Vellachal</div>
       <div class="stat-label1">Team manager : Name</div>
       <div class="stat-label">50 Participants</div>
       <div class="td-bar red" style="width:100%"></div>
-      
+
   </div>
 </section>
 
@@ -940,6 +940,33 @@ function launchConfetti() {
   }
   setTimeout(() => { wrap.style.display = 'none'; wrap.innerHTML = ''; }, 5000);
 }
+
+// ── HERO STAT COUNTERS ──
+function animateStatCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  let start = null;
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const value = Math.floor(easeOutCubic(progress) * target);
+    const display = target < 10 ? String(value).padStart(2, '0') : value;
+    el.textContent = display + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const statsObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.stat-num[data-target]').forEach(animateStatCounter);
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+statsObserver.observe(document.querySelector('.stats-strip'));
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
