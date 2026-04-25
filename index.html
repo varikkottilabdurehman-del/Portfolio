@@ -251,26 +251,32 @@
   }
 
   .team-cards { display: flex; flex-direction: column; gap: 16px; }
-
   .team-card {
     background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; padding: 24px 28px;
-    display: flex; align-items: center; gap: 20px;
+    display: flex; align-items: flex-start;
+    gap: 20px;
     transition: transform 0.2s, border-color 0.2s;
     position: relative; overflow: hidden;<i></i>
   }
   .team-card:hover { transform: translateY(-2px); border-color: #333; }
-  .team-card.rank-1 { border-color: rgba(240,180,41,0.3); }
+  .team-card.rank-1 { border-color: rgba(240,180,41,0.3); border-radius: 14px; padding: 24px 28px;
+    display: flex; align-items: flex-start;
+    gap: 20px; }
   .team-card.rank-1::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--gold), transparent);
   }
-  .team-card.rank-2 { border-color: rgba(160,174,192,0.3); }
+  .team-card.rank-2 { border-color: rgba(160,174,192,0.3); border-radius: 14px; padding: 24px 28px;
+    display: flex; align-items: flex-start;
+    gap: 20px;}
   .team-card.rank-2::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--silver), transparent);
   }
-  .team-card.rank-3 { border-color: rgba(205,127,50,0.3); }
+  .team-card.rank-3 { border-color: rgba(205,127,50,0.3); border-radius: 14px; padding: 24px 28px;
+    display: flex; align-items: flex-start;
+    gap: 20px;}
   .team-card.rank-3::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--red), transparent);
