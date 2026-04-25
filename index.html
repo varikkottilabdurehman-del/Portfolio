@@ -285,7 +285,7 @@
   .rank-icon { font-size: 1.8rem; flex-shrink: 0; }
   .team-info { flex: 1; min-width: 0; }
   .team-name {
-    font-family: 'poppins', sans-serif; font-weight: 700; font-size: 1.7rem;
+    font-family: 'poppins', sans-serif; font-weight: 700; font-size: 1.5rem;
     margin-bottom: 10px;
   }
   .team-card.rank-1 .team-name { color: var(--gold); }
@@ -562,7 +562,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="100%"></div></div>
         <div class="team-pos-label">Position 1     </div>
       </div>
-      <div class="team-score" id="score1">0</div>
+      <div class="team-score" id="score1" data-target="800">800</div>
     </div>
     <div class="team-card rank-2">
       <div class="rank-icon">🥈</div>
@@ -571,7 +571,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="100%"></div></div>
         <div class="team-pos-label">Position 2     </div>
       </div>
-      <div class="team-score" id="score2">0</div>
+      <div class="team-score" id="score2" data-target="800">800</div>
     </div>
     <div class="team-card rank-3">
       <div class="rank-icon">🥉</div>
@@ -580,7 +580,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="100%"></div></div>
         <div class="team-pos-label">Position 3     </div>
       </div>
-      <div class="team-score" id="score3">0</div>
+      <div class="team-score" id="score3" data-target="800">800</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
@@ -589,7 +589,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
         <div class="team-pos-label">Position 4     </div>
       </div>
-      <div class="team-score">0</div>
+      <div class="team-score" data-target="800">800</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
@@ -598,7 +598,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
         <div class="team-pos-label">Position 5     </div>
       </div>
-      <div class="team-score">0</div>
+      <div class="team-score" data-target="800">800</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
@@ -607,7 +607,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
         <div class="team-pos-label">Position 6     </div>
       </div>
-      <div class="team-score">0</div>
+      <div class="team-score" data-target="800">800</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
@@ -616,7 +616,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
         <div class="team-pos-label">Position 7     </div>
       </div>
-      <div class="team-score">0</div>
+      <div class="team-score" data-target="800">800</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
@@ -625,7 +625,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
         <div class="team-pos-label">Position 8     </div>
       </div>
-      <div class="team-score">0</div>
+      <div class="team-score" data-target="800">800</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
@@ -634,7 +634,7 @@
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
         <div class="team-pos-label">Position 9     </div>
       </div>
-      <div class="team-score">0</div>
+      <div class="team-score" data-target="800">800</div>
     </div>
   </div>          
 </section>
@@ -799,6 +799,20 @@ obs.observe(document.getElementById('scoreboard'));
 function countUp() {
   document.getElementById('resultCount').textContent = "After 0 Results";
   launchConfetti();
+  // Animate all team score numbers
+  document.querySelectorAll('.team-score[data-target]').forEach(function(el) {
+    var target = parseInt(el.dataset.target);
+    var duration = 1800;
+    var start = null;
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      el.textContent = Math.floor(easeOutCubic(progress) * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
 }
 
 // ── RESULTS DATA ──
