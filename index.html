@@ -338,7 +338,7 @@
   .result-output { margin-top: 0; }
   .result-placeholder {
     text-align: center; padding: 60px 20px;
-    color: var(--muted); font-size: 0.95rem;
+    color: var(--muted); font-size: 0.85rem;
   }
 
   .result-cards { display: flex; flex-direction: column; gap: 14px; }
@@ -351,7 +351,7 @@
   .result-rank {
     width: 40px; height: 40px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem;
+    font-family: 'poppins', sans-serif; font-weight: 800; font-size: 1rem;
     flex-shrink: 0;
   }
   .result-rank.gold { background: rgba(240,180,41,0.15); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
@@ -381,7 +381,7 @@
     letter-spacing: 0.12em; color: var(--teal); text-transform: uppercase;
     margin-bottom: 8px;
   }
-  .prog-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+  .prog-name { font-family: 'poppins', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
   .prog-info { font-size: 0.8rem; color: var(--muted); }
 
   /* ─── TEAMS ─── */
@@ -641,31 +641,33 @@
 
 <!-- RESULTS -->
 <section id="results">
-  <div class="section-tag">// Winners</div>
-  <h2 class="section-title">Results</h2>
-  <p class="section-sub">Explore the achievements and celebrate the winners of SSF Ozhur Sector Sahityotsav'26</p>
+  <div class="section-tag">// Data</div>
+  <h2 class="section-title">About Participant</h2>
+  <p class="section-sub">Here Participating Two Hundred and above Participants. Find the Participant's Unit and Category from here.</p>
 
   <div class="result-finder">
-    <h3>Find Results</h3>
+    <h3>Find Participant</h3>
     <div class="finder-row">
       <select class="finder-select" id="catSelect" onchange="updateProgrammes()">
-        <option value="">Select a category</option>
-        <option value="Lower Primary">Lower Primary ( LP )</option>
-        <option value="Upper Primary">Upper Primary ( UP )</option>
-        <option value="High School">High School ( HS )</option>
-        <option value="Higher Secondary">Higher Secondary ( HSS )</option>
-        <option value="Junior">Junior ( JR )</option>
-        <option value="senior">Senior ( SR )</option>
-        <option value="general">General</option>
+        <option value="">Select Your Unit</option>
+        <option value="AYYAYA">AYYAYA</option>
+        <option value="CHURANGARA">CHURANGARA</option>
+        <option value="KORAD">KORAD</option>
+        <option value="KURUVATTISSERI">KURUVATTISSERI</option>
+        <option value="ONAKKAD">ONAKKAD</option>
+        <option value="OZHUR">OZHUR</option>
+        <option value="PULIPPARAMB">PULIPPARAMB</option>
+        <option value="THALAKKATTUR">THALAKKATTUR</option>
+        <option value="VELLACHAL">VELLACHAL</option>
       </select>
-      <select class="finder-select" id="progSelect" onchange="showResults()" disabled>
-        <option value="">Select a programme</option>
+      <select class="finder-select" id="progSelect" onchange="showParticipants()" disabled>
+        <option value="">Select Your Category</option>
       </select>
     </div>
   </div>
 
   <div class="result-output" id="resultOutput">
-    <div class="result-placeholder">Select a category and programme to view results</div>
+    <div class="result-placeholder">Select a Unit and Category to Find Participant</div>
   </div>
 </section>
 
@@ -803,7 +805,7 @@ function countUp() {
   document.querySelectorAll('.team-score[data-target]').forEach(function(el) {
     var target = parseInt(el.dataset.target);
     var duration = 1800;
-    var start = null;
+    var start = 0;
     function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
     function step(timestamp) {
       if (!start) start = timestamp;
@@ -815,94 +817,95 @@ function countUp() {
   });
 }
 
-// ── RESULTS DATA ──
-const resultsData = {
-  junior: {
-    'Quranic Oration Mal': [
-      { rank: 1, name: 'Muhammad Savad', team: 'Pesh Pulse' },
-      { rank: 2, name: 'Mohammed Muzzammil', team: 'Zabar Blaze' },
-      { rank: 3, name: 'Muhammed Bakir T A', team: 'Pesh Pulse' },
-    ],
-    'Public Talk Eng': [
-      { rank: 1, name: 'Fatima Zara', team: 'Zer Zenith' },
-      { rank: 2, name: 'Ali Hassan', team: 'Nova Spark' },
-      { rank: 3, name: 'Aisha Noor', team: 'Zabar Blaze' },
-    ],
-    'Elocution Malayalam': [
-      { rank: 1, name: 'Rahul Krishna', team: 'Nova Spark' },
-      { rank: 2, name: 'Arjun Dev', team: 'Pesh Pulse' },
-      { rank: 3, name: 'Meera Pillai', team: 'Zer Zenith' },
-    ],
-    'Thaqreer Urdu': [
-      { rank: 1, name: 'Umar Farooque', team: 'Zabar Blaze' },
-      { rank: 2, name: 'Ibrahim Khalil', team: 'Pesh Pulse' },
-      { rank: 3, name: 'Yasir Arafat', team: 'Zer Zenith' },
-    ],
-  },
-  senior: {
-    'Pros & Cons English': [
-      { rank: 1, name: 'Sana Sheikh', team: 'Zer Zenith' },
-      { rank: 2, name: 'Faisal Rashid', team: 'Pesh Pulse' },
-      { rank: 3, name: 'Layla Ahmed', team: 'Nova Spark' },
-    ],
-    'Live Extempore Arabic': [
-      { rank: 1, name: 'Omar Abdullah', team: 'Pesh Pulse' },
-      { rank: 2, name: 'Khalid Mansoor', team: 'Zer Zenith' },
-      { rank: 3, name: 'Tariq Hussain', team: 'Zabar Blaze' },
-    ],
-    'Live Translation Arb-Eng': [
-      { rank: 1, name: 'Nadia Rahman', team: 'Nova Spark' },
-      { rank: 2, name: 'Zaid Al-Farsi', team: 'Zabar Blaze' },
-      { rank: 3, name: 'Hana Khalil', team: 'Pesh Pulse' },
-    ],
-  },
-  general: {
-    "Qira'ath": [
-      { rank: 1, name: 'Abdul Aziz', team: 'Pesh Pulse' },
-      { rank: 2, name: 'Bilal Ahmed', team: 'Zer Zenith' },
-      { rank: 3, name: 'Yusuf Hamdan', team: 'Nova Spark' },
-    ],
-    'Thahfeez A': [
-      { rank: 1, name: 'Hamid Karimi', team: 'Zabar Blaze' },
-      { rank: 2, name: 'Saad Imran', team: 'Pesh Pulse' },
-      { rank: 3, name: 'Ameen Qasim', team: 'Zer Zenith' },
-    ],
-    'Calligraphy': [
-      { rank: 1, name: 'Leena Bint', team: 'Nova Spark' },
-      { rank: 2, name: 'Sara Yousef', team: 'Pesh Pulse' },
-      { rank: 3, name: 'Dina Al-Mutairi', team: 'Zabar Blaze' },
-    ],
-  },
-  'Higher Secondary': {
-    'Kithabic Quiz': [
-      { rank: 1, name: 'Amir Shah', team: 'Zer Zenith' },
-      { rank: 2, name: 'Rayan Malik', team: 'Nova Spark' },
-      { rank: 3, name: 'Zara Qureshi', team: 'Pesh Pulse' },
-    ],
-    'Mappilappattu': [
-      { rank: 1, name: 'Jasim Abdul', team: 'Zabar Blaze' },
-      { rank: 2, name: 'Rifa Noor', team: 'Zer Zenith' },
-      { rank: 3, name: 'Faris Basheer', team: 'Pesh Pulse' },
-    ],
-  },
+const programmes = {
+  AYYAYA: ["Lower Primary", 'Thahfeez A', 'Calligraphy'],
 };
 
-const programmes = {
-  general: ["Qira'ath", 'Thahfeez A', 'Calligraphy'],
-  senior: ['Pros & Cons English', 'Live Extempore Arabic', 'Live Translation Arb-Eng'],
-  junior: ['Quranic Oration Mal', 'Public Talk Eng', 'Elocution Malayalam', 'Thaqreer Urdu'],
-  'Higher Secondary': ['Kithabic Quiz', 'Mappilappattu'],
+// ── PARTICIPANT DATA ──
+const participantData = {
+  AYYAYA: {
+    'Lower Primary':    ['No Data'],
+    'Upper Primary':    ['Abiyan', 'Anfil', 'Ashmil', 'Rishil', 'Shaduli'],
+    'High School':      ['Adil', 'Anfas CP', 'Niloofar'],
+    'Higher Secondary': ['Liya'],
+    'Junior': ['No Data'],    
+    'Senior': ['No Data'],
+  },
+  CHURANGARA: {
+    'Lower Primary':    ['Abdurahman', 'Barza', 'Jaisha', 'Mirsha', 'Shamil M', 'Shammas CC', 'Zamansha'],
+    'Upper Primary':    ['Fathima Saneeha K', 'Mirfa', 'Muhsina', 'Raihan P', 'Shad Kareem', 'Shaduli M', 'Shaduli MK'],
+    'High School':      ['Aysha Asla', 'Hisana', 'Muhammed Midlaj N', 'Muhammed Mishab K', 'Muhammed Savad NC', 'Muhammed Shamil P', 'Muhammed Shammas N', 'Muhammed Sideeq', 'Muhammed Sinan NC', 'Saniyya'],
+    'Higher Secondary': ['Ayishathu Zahra', 'Hamna', 'Rifad K.P', 'Shahal T.P', 'Shibili P', 'Sinan M.K'],
+    'Junior':           ['Safvan Nc', 'Shahal Mk', 'Shahal Tk', 'Shahul Hameed', 'Shuhaib Nc', 'Yahiya P'],
+    'Senior':           ['Basith P', 'Saidalavi P', 'Javad Pt', 'Fadhul Abid Ap', 'Ali Rasil Pt'],
+  },
+  KORAD: {
+    'Lower Primary':    ['Ashmil', 'Minhaj', 'Muhsin', 'Rihan', 'Rishal', 'Shaduli'],
+    'Upper Primary':    ['Faih', 'Hezin', 'Junaid VT', 'Labeeb', 'Rilwan', 'Shamil', 'Shamnad'],
+    'High School':      ['Haseeb', 'Hashir P', 'Irshad', 'Nesrin', 'Sabith', 'Shahal', 'Vasil VT'],
+    'Higher Secondary': ['Fouzan', 'Hashir P.K', 'Irfan', 'Munavvir', 'Shameem', 'Sinan C', 'Swadiq'],
+    'Junior':           ['Abdul Basith Ct', 'Ajmal Vt', 'Aslam Pk', 'Hasbinsha', 'Nafih C', 'Salim Vt', 'Sinan Nv'],
+    'Senior':           ['Abdul Basith P', 'Fukhar', 'Mujab', 'Sahad Vt', 'Iflah T', 'Afnan Nv', 'Muhad'],
+  },
+  KURUVATTISSERI: {
+    'Lower Primary':    ['Abdullah Juraij', 'Husna', 'Muflih', 'Muhammed Razeen Nazir M.P', 'Shammas'],
+    'Upper Primary':    ['Janna Jabin', 'Mirdhas K.P', 'Muhammed Labeeb', 'Muhammed Shaheem', 'Muhammed Shahal M.P', 'Rajih', 'Saneeha Misri', 'Shafeeq'],
+    'High School':      ['Abubakar P.P.', 'Fathima Hiba K.P.', 'Fathima Sana', 'Hashir T.V.', 'Jaseel', 'Rasal M.P.', 'Saleema Shirin'],
+    'Higher Secondary': ['Fathima Rinsha', 'Kabeer P', 'Nashim K.P', 'Qadeeja Rifa', 'Rishal M.P', 'Shibili E'],
+    'Junior':           ['Afreed Shaduli', 'Anees', 'Muhammed Adnan', 'Muhammed Fayiz M.P'],
+    'Senior':           ['Sunain', 'Sanish', 'Yasir M', 'Sinan'],
+  },
+  ONAKKAD: {
+    'Lower Primary':   ['No Data'],
+    'Upper Primary':    ['Muhammed Sahal .K'],
+    'High School':      ['Hamid Afnan', 'Nadir Habeeb'],
+    'Higher Secondary': ['Muhammed Sinan K'],
+    'Junior':           ['Ajvad K', 'Sayyid Muhammed Fadil'],
+    'Senior':           ['Abdul Qader'],
+  },
+  OZHUR: {
+    'Lower Primary':    ['No Data'],
+    'Upper Primary':    ['No Data'],
+    'High School':      ['No Data'],
+    'Higher Secondary': ['No Data'],
+    'Junior':           ['No Data'],
+    'Senior':           ['No Data'],
+  },
+  PULIPPARAMB: {
+    'Lower Primary':    ['Hamda', 'Ihsan', 'Jubair T', 'Lezin', 'Lubaba', 'Rabhan P'],
+    'Upper Primary':    ['Abdul Azeez', 'Bishr', 'Hafsa', 'Haseena', 'Shamveel', 'Shaz'],
+    'High School':      ['Ansif', 'Farhan', 'Hasnath', 'Mishal', 'Naseef', 'Rafiya', 'Razi', 'Shahal', 'Shaima', 'Shamveel', 'Shan'],
+    'Higher Secondary': ['Adhil', 'Ansif', 'Labeeb', 'Lubaba', 'Sana', 'Shamveel'],
+    'Junior':           ['Anshad', 'Asif', 'Fadhil', 'Hashir Shan', 'Junaid', 'Uvais'],
+    'Senior':           ['Sinan', 'Jamnas', 'Fasil', 'Sidheequ', 'Abid Shan', 'Anas', 'Shanib', 'Hashir'],
+  },
+  THALAKKATTUR: {
+    'Lower Primary':    ['Fathima Sherin', 'Salim', 'Shaha Fathima', 'Shahid', 'Shamil C', 'Ziyad'],
+    'Upper Primary':    ['Fayiha', 'Nasib VK', 'Shibil C', 'Shiful Ameen K', 'Swliha Fathima'],
+    'High School':      ['Adil V', 'Fathima Nishfa', 'Harshad', 'Rifwan', 'Sana', 'Shahma Sherin VV', 'Shebeeb', 'Ziyad K'],
+    'Higher Secondary': ['Fahmida C', 'Hasna T', 'Ihsan', 'Muhammad Sinan M.T', 'Shibin'],
+    'Junior':           ['Arif', 'Muhammed Najib', 'Sabith'],
+    'Senior':           ['Muhammad Sinan', 'Sainul Abid', 'Arshid', 'Muhsin', 'Adil Mubarak'],
+  },
+  VELLACHAL: {
+    'Lower Primary':    ['Mehrin', 'Rayan', 'Razan', 'Shaduli Rahman'],
+   'Upper Primary':    ['Fadi Mueenudheen', 'Fathima Naja', 'Mohammed', 'Mohammed Ayan', 'Zayan Sawaf'],
+    'High School':      ['Mohammed Shemin MK', 'Mohammed Shibili', 'Muhammed Rabeeh', 'Zayan Ibhrahim'],
+    'Higher Secondary': ['Masroor V.P', 'Nabeeha Nasrin'],
+    'Junior': ['Mohammed Hisham'],
+    'Senior':           ['Mohammed Shibili', 'Mohammed Irfan', 'Minhaj Ck', 'Ajmal'],
+  },
 };
 
 function updateProgrammes() {
-  const cat = document.getElementById('catSelect').value;
+  const unit = document.getElementById('catSelect').value;
   const progSel = document.getElementById('progSelect');
-  progSel.innerHTML = '<option value="">Select a programme</option>';
-  document.getElementById('resultOutput').innerHTML = '<div class="result-placeholder">Select a category and programme to view results</div>';
-  if (cat && programmes[cat]) {
-    programmes[cat].forEach(p => {
+  progSel.innerHTML = '<option value="">Select Your Category</option>';
+  document.getElementById('resultOutput').innerHTML = '<div class="result-placeholder">Select a Unit and Category to Find Participant</div>';
+  if (unit) {
+    ['Lower Primary', 'Upper Primary', 'High School', 'Higher Secondary', 'Junior', 'Senior'].forEach(cat => {
       const opt = document.createElement('option');
-      opt.value = p; opt.textContent = p;
+      opt.value = cat; opt.textContent = cat;
       progSel.appendChild(opt);
     });
     progSel.disabled = false;
@@ -911,33 +914,35 @@ function updateProgrammes() {
   }
 }
 
-function showResults() {
-  const cat = document.getElementById('catSelect').value;
-  const prog = document.getElementById('progSelect').value;
+function showParticipants() {
+  const unit = document.getElementById('catSelect').value;
+  const cat  = document.getElementById('progSelect').value;
   const output = document.getElementById('resultOutput');
-  if (!cat || !prog) {
-    output.innerHTML = '<div class="result-placeholder">Select a category and programme to view results</div>';
+  if (!unit || !cat) {
+    output.innerHTML = '<div class="result-placeholder">Select a Unit and Category to Find Participant</div>';
     return;
   }
-  const data = resultsData[cat] && resultsData[cat][prog];
-  if (!data) {
-    output.innerHTML = '<div class="result-placeholder">No results available yet</div>';
+  const names = participantData[unit] && participantData[unit][cat];
+  if (!names) {
+    output.innerHTML = '<div class="result-placeholder">No participants available yet</div>';
     return;
   }
-  const rankClass = ['gold','silver','bronze'];
+  const avatarColors = ['white'];
   output.innerHTML = `
-    <div style="margin-bottom:16px">
-      <div class="section-tag">// ${cat.toUpperCase()}</div>
-      <h3 style="font-family:'poppins',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:24px">${prog}</h3>
+    <div style="margin-bottom:20px">
+      <div class="section-tag">// ${unit}</div>
+      <h3 style="font-family:'poppins',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:4px">${cat}</h3>
+      <p style="color:var(--muted);font-size:0.85rem">${names.length} Participants</p>
     </div>
     <div class="result-cards">
-      ${data.map((r,i) => `
-        <div class="result-card" style="animation-delay:${i*0.1}s">
-          <div class="result-rank ${rankClass[i]}">${r.rank}</div>
-          <div class="result-info">
-            <div class="result-name">${r.name}</div>
-            <span class="result-team">${r.team}</span>
+      ${names.map((name, i) => `
+        <div class="result-card" style="animation-delay:${i*0.08}s">
+          <div class="result-rank" style="background:rgba(29,207,180,0.08);border:1px solid rgba(29,207,180,0.2);color:${avatarColors[i]};font-size:1.1rem;font-weight:800">
+            ${String(i + 1).padStart(2, '0')}
           </div>
+          <div class="result-info">
+            <div class="result-name" style="font-weight:600">${name}</div>
+         </div>
         </div>
       `).join('')}
     </div>
