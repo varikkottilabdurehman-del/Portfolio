@@ -200,7 +200,7 @@
 
 .hero-btns {
     margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: space-between;
-    position: relative; z-index: 1;
+    position:  ; relative; z-index: 1;
     animation: fadeUp 0.6s 0.4s ease both;
   }
   .btn-primary {
@@ -255,46 +255,54 @@
   .team-card {
     background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; padding: 24px 28px;
-    display: flex; align-items: flex-start;
+    display: flex; align-items: center;
     gap: 20px;
     transition: transform 0.2s, border-color 0.2s;
-    position: relative; overflow: hidden;<i></i>
+    position: relative; overflow: hidden;
   }
   .team-card:hover { transform: translateY(-2px); border-color: #333; }
-  .team-card.rank-1 { border-color: rgba(240,180,41,0.3); border-radius: 14px; padding: 24px 28px;
-    display: flex; align-items: flex-start;
-    gap: 20px; }
+  .team-card.rank-1 { border-color: rgba(240,180,41,0.3); }
   .team-card.rank-1::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--gold), transparent);
   }
-  .team-card.rank-2 { border-color: rgba(160,174,192,0.3); border-radius: 14px; padding: 24px 28px;
-    display: flex; align-items: flex-start;
-    gap: 20px;}
+  .team-card.rank-2 { border-color: rgba(160,174,192,0.3); }
   .team-card.rank-2::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--silver), transparent);
   }
-  .team-card.rank-3 { border-color: rgba(205,127,50,0.3); border-radius: 14px; padding: 24px 28px;
-    display: flex; align-items: flex-start;
-    gap: 20px;}
+  .team-card.rank-3 { border-color: rgba(205,127,50,0.3); }
   .team-card.rank-3::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--bronze), transparent);
   }
   .rank-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+  /* team-info fills all space after icon */
   .team-info { flex: 1; min-width: 0; }
+
+  /* Name and score on same row */
+  .team-name-row {
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
   .team-name {
     font-family: 'poppins', sans-serif; font-weight: 700; font-size: 1.5rem;
-    margin-bottom: 10px;
   }
   .team-card.rank-1 .team-name { color: var(--gold); }
   .team-card.rank-2 .team-name { color: var(--silver); }
   .team-card.rank-3 .team-name { color: var(--bronze); }
 
+  .team-score {
+    font-family: 'poppins', sans-serif; font-weight: 800;
+    font-size: 2.2rem;
+  }
+
+  /* Bar spans full width of team-info = from name start to score end */
   .score-bar-wrap {
-    height: 6px; width: 255px; background: rgba(255,255,255,0.06);
-    border-radius: 100px; overflow: hidden; margin-bottom: 8px;
+    height: 6px; width: 100%; background: rgba(255,255,255,0.06);
+    border-radius: 100px; overflow: hidden; margin-bottom: 6px;
   }
   .score-bar {
     height: 100%; border-radius: 100px;
@@ -305,11 +313,6 @@
   .team-card.rank-3 .score-bar { background: var(--bronze); }
 
   .team-pos-label { font-size: 0.75rem; color: var(--muted); }
-
-  .team-score {
-    font-family: 'poppins', sans-serif; font-weight: 800;
-    font-size: 2.2rem; flex-shrink: 0;
-  }
 
   /* ─── RESULTS ─── */
   #results { background: var(--dark); }
@@ -539,7 +542,7 @@
     </div>
   <div class="hero-btns">
     <a href="#scoreboard" class="btn-primary">View Scoreboard</a>
-    <a href="#results" class="btn-primary">Find Participant</a>
+    <a href="#results" class="btn-primary">Find Participant</a></a>
   </div>
 </section>
 
@@ -558,83 +561,101 @@
     <div class="team-card rank-1">
       <div class="rank-icon">🏆</div>
       <div class="team-info">
-        <div class="team-name">Ayyaya</div>
+        <div class="team-name-row">
+          <div class="team-name">Ayyaya</div>
+          <div class="team-score" id="score1" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 1     </div>
+        <div class="team-pos-label">Position 1</div>
       </div>
-      <div class="team-score" id="score1" data-target="0">0</div>
     </div>
     <div class="team-card rank-2">
       <div class="rank-icon">🥈</div>
       <div class="team-info">
-        <div class="team-name">Churangara</div>
+        <div class="team-name-row">
+          <div class="team-name">Churangara</div>
+          <div class="team-score" id="score2" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 2     </div>
+        <div class="team-pos-label">Position 2</div>
       </div>
-      <div class="team-score" id="score2" data-target="0">0</div>
     </div>
     <div class="team-card rank-3">
       <div class="rank-icon">🥉</div>
       <div class="team-info">
-        <div class="team-name">Korad</div>
+        <div class="team-name-row">
+          <div class="team-name">Korad</div>
+          <div class="team-score" id="score3" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 3     </div>
+        <div class="team-pos-label">Position 3</div>
       </div>
-      <div class="team-score" id="score3" data-target="0">0</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
       <div class="team-info">
-        <div class="team-name" style="color:var(--teal)">Kuruvattisseri</div>
+        <div class="team-name-row">
+          <div class="team-name" style="color:var(--teal)">Kuruvattisseri</div>
+          <div class="team-score" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 4     </div>
+        <div class="team-pos-label">Position 4</div>
       </div>
-      <div class="team-score" data-target="0">0</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
       <div class="team-info">
-        <div class="team-name" style="color:var(--teal)">Onakkad</div>
+        <div class="team-name-row">
+          <div class="team-name" style="color:var(--teal)">Onakkad</div>
+          <div class="team-score" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 5     </div>
+        <div class="team-pos-label">Position 5</div>
       </div>
-      <div class="team-score" data-target="0">0</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
       <div class="team-info">
-        <div class="team-name" style="color:var(--teal)">Ozhur</div>
+        <div class="team-name-row">
+          <div class="team-name" style="color:var(--teal)">Ozhur</div>
+          <div class="team-score" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 6     </div>
+        <div class="team-pos-label">Position 6</div>
       </div>
-      <div class="team-score" data-target="0">0</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
       <div class="team-info">
-        <div class="team-name" style="color:var(--teal)">Pulipparamb</div>
+        <div class="team-name-row">
+          <div class="team-name" style="color:var(--teal)">Pulpparamb</div>
+          <div class="team-score" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 7     </div>
+        <div class="team-pos-label">Position 7</div>
       </div>
-      <div class="team-score" data-target="0">0</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
       <div class="team-info">
-        <div class="team-name" style="color:var(--teal)">Thalakkattur</div>
+        <div class="team-name-row">
+          <div class="team-name" style="color:var(--teal)">Thalakkattur</div>
+          <div class="team-score" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 8     </div>
+        <div class="team-pos-label">Position 8</div>
       </div>
-      <div class="team-score" data-target="0">0</div>
     </div>
     <div class="team-card" style="border-color:#222">
       <div class="rank-icon">🏅</div>
       <div class="team-info">
-        <div class="team-name" style="color:var(--teal)">Vellachal</div>
+        <div class="team-name-row">
+          <div class="team-name" style="color:var(--teal)">Vellachal</div>
+          <div class="team-score" data-target="0">0</div>
+        </div>
         <div class="score-bar-wrap"><div class="score-bar" style="width:0%;background:var(--teal)" data-width="100%"></div></div>
-        <div class="team-pos-label">Position 9     </div>
+        <div class="team-pos-label">Position 9</div>
       </div>
-      <div class="team-score" data-target="0">0</div>
     </div>
   </div>          
 </section>
@@ -656,7 +677,7 @@
         <option value="KURUVATTISSERI">KURUVATTISSERI</option>
         <option value="ONAKKAD">ONAKKAD</option>
         <option value="OZHUR">OZHUR</option>
-        <option value="PULIPPARAMB">PULIPPARAMB</option>
+        <option value="PULPPARAMB">PULPPARAMB</option>
         <option value="THALAKKATTUR">THALAKKATTUR</option>
         <option value="VELLACHAL">VELLACHAL</option>
       </select>
@@ -722,7 +743,7 @@
 
     </div>
     <div class="team-detail-card">
-      <div class="td-name" style="color:#FF00AE">Pulipparamb</div>
+      <div class="td-name" style="color:#FF00AE">Pulpparamb</div>
       <div class="stat-label1">Team Manager :Name</div>
       <div class="stat-label">50 Participants</div>
       <div class="td-bar pink" style="width:100%"></div>
@@ -818,82 +839,82 @@ function countUp() {
 }
 
 const programmes = {
-  AYYAYA: ["Lower Primary", 'Thahfeez A', 'Calligraphy'],
+  AYYAYA: ["LOWER PRIMARY", 'Thahfeez A', 'Calligraphy'],
 };
 
 // ── PARTICIPANT DATA ──
 const participantData = {
   AYYAYA: {
-    'Lower Primary':    ['No Data'],
-    'Upper Primary':    ['Abiyan', 'Anfil', 'Ashmil', 'Rishil', 'Shaduli'],
-    'High School':      ['Adil', 'Anfas CP', 'Niloofar'],
-    'Higher Secondary': ['Liya'],
-    'Junior': ['No Data'],    
-    'Senior': ['No Data'],
+    'LOWER PRIMARY':    ['No Data'],
+    'UPPER PRIMARY':    ['Abiyan', 'Anfil', 'Ashmil', 'Rishil', 'Shaduli'],
+    'HIGH SCHOOL':      ['Adil', 'Anfas CP', 'Niloofar'],
+    'HIGHER SECONDARY': ['Liya'],
+    'JUNIOR': ['No Data'],    
+    'SENIOR': ['No Data'],
   },
   CHURANGARA: {
-    'Lower Primary':    ['Abdurahman', 'Barza', 'Jaisha', 'Mirsha', 'Shamil M', 'Shammas CC', 'Zamansha'],
-    'Upper Primary':    ['Fathima Saneeha K', 'Mirfa', 'Muhsina', 'Raihan P', 'Shad Kareem', 'Shaduli M', 'Shaduli MK'],
-    'High School':      ['Aysha Asla', 'Hisana', 'Muhammed Midlaj N', 'Muhammed Mishab K', 'Muhammed Savad NC', 'Muhammed Shamil P', 'Muhammed Shammas N', 'Muhammed Sideeq', 'Muhammed Sinan NC', 'Saniyya'],
-    'Higher Secondary': ['Ayishathu Zahra', 'Hamna', 'Rifad K.P', 'Shahal T.P', 'Shibili P', 'Sinan M.K'],
-    'Junior':           ['Safvan Nc', 'Shahal Mk', 'Shahal Tk', 'Shahul Hameed', 'Shuhaib Nc', 'Yahiya P'],
-    'Senior':           ['Basith P', 'Saidalavi P', 'Javad Pt', 'Fadhul Abid Ap', 'Ali Rasil Pt'],
+    'LOWER PRIMARY':    ['Abdurahman', 'Barza', 'Jaisha', 'Mirsha', 'Shamil M', 'Shammas CC', 'Zamansha'],
+    'UPPER PRIMARY':    ['Fathima Saneeha K', 'Mirfa', 'Muhsina', 'Raihan P', 'Shad Kareem', 'Shaduli M', 'Shaduli MK'],
+    'HIGH SCHOOL':      ['Aysha Asla', 'Hisana', 'Muhammed Midlaj N', 'Muhammed Mishab K', 'Muhammed Savad NC', 'Muhammed Shamil P', 'Muhammed Shammas N', 'Muhammed Sideeq', 'Muhammed Sinan NC', 'Saniyya'],
+    'HIGHER SECONDARY': ['Ayishathu Zahra', 'Hamna', 'Rifad K.P', 'Shahal T.P', 'Shibili P', 'Sinan M.K'],
+    'JUNIOR':           ['Safvan Nc', 'Shahal Mk', 'Shahal Tk', 'Shahul Hameed', 'Shuhaib Nc', 'Yahiya P'],
+    'SENIOR':           ['Basith P', 'Saidalavi P', 'Javad Pt', 'Fadhul Abid Ap', 'Ali Rasil Pt'],
   },
   KORAD: {
-    'Lower Primary':    ['Ashmil', 'Minhaj', 'Muhsin', 'Rihan', 'Rishal', 'Shaduli'],
-    'Upper Primary':    ['Faih', 'Hezin', 'Junaid VT', 'Labeeb', 'Rilwan', 'Shamil', 'Shamnad'],
-    'High School':      ['Haseeb', 'Hashir P', 'Irshad', 'Nesrin', 'Sabith', 'Shahal', 'Vasil VT'],
-    'Higher Secondary': ['Fouzan', 'Hashir P.K', 'Irfan', 'Munavvir', 'Shameem', 'Sinan C', 'Swadiq'],
-    'Junior':           ['Abdul Basith Ct', 'Ajmal Vt', 'Aslam Pk', 'Hasbinsha', 'Nafih C', 'Salim Vt', 'Sinan Nv'],
-    'Senior':           ['Abdul Basith P', 'Fukhar', 'Mujab', 'Sahad Vt', 'Iflah T', 'Afnan Nv', 'Muhad'],
+    'LOWER PRIMARY':    ['Ashmil', 'Minhaj', 'Muhsin', 'Rihan', 'Rishal', 'Shaduli'],
+    'UPPER PRIMARY':    ['Faih', 'Hezin', 'Junaid VT', 'Labeeb', 'Rilwan', 'Shamil', 'Shamnad'],
+    'HIGH SCHOOL':      ['Haseeb', 'Hashir P', 'Irshad', 'Nesrin', 'Sabith', 'Shahal', 'Vasil VT'],
+    'HIGHER SECONDARY': ['Fouzan', 'Hashir P.K', 'Irfan', 'Munavvir', 'Shameem', 'Sinan C', 'Swadiq'],
+    'JUNIOR':           ['Abdul Basith Ct', 'Ajmal Vt', 'Aslam Pk', 'Hasbinsha', 'Nafih C', 'Salim Vt', 'Sinan Nv'],
+    'SENIOR':           ['Abdul Basith P', 'Fukhar', 'Mujab', 'Sahad Vt', 'Iflah T', 'Afnan Nv', 'Muhad'],
   },
   KURUVATTISSERI: {
-    'Lower Primary':    ['Abdullah Juraij', 'Husna', 'Muflih', 'Muhammed Razeen Nazir M.P', 'Shammas'],
-    'Upper Primary':    ['Janna Jabin', 'Mirdhas K.P', 'Muhammed Labeeb', 'Muhammed Shaheem', 'Muhammed Shahal M.P', 'Rajih', 'Saneeha Misri', 'Shafeeq'],
-    'High School':      ['Abubakar P.P.', 'Fathima Hiba K.P.', 'Fathima Sana', 'Hashir T.V.', 'Jaseel', 'Rasal M.P.', 'Saleema Shirin'],
-    'Higher Secondary': ['Fathima Rinsha', 'Kabeer P', 'Nashim K.P', 'Qadeeja Rifa', 'Rishal M.P', 'Shibili E'],
-    'Junior':           ['Afreed Shaduli', 'Anees', 'Muhammed Adnan', 'Muhammed Fayiz M.P'],
-    'Senior':           ['Sunain', 'Sanish', 'Yasir M', 'Sinan'],
+    'LOWER PRIMARY':    ['Abdullah Juraij', 'Husna', 'Muflih', 'Muhammed Razeen Nazir M.P', 'Shammas'],
+    'UPPER PRIMARY':    ['Janna Jabin', 'Mirdhas K.P', 'Muhammed Labeeb', 'Muhammed Shaheem', 'Muhammed Shahal M.P', 'Rajih', 'Saneeha Misri', 'Shafeeq'],
+    'HIGH SCHOOL':      ['Abubakar P.P.', 'Fathima Hiba K.P.', 'Fathima Sana', 'Hashir T.V.', 'Jaseel', 'Rasal M.P.', 'Saleema Shirin'],
+    'HIGHER SECONDARY': ['Fathima Rinsha', 'Kabeer P', 'Nashim K.P', 'Qadeeja Rifa', 'Rishal M.P', 'Shibili E'],
+    'JUNIOR':           ['Afreed Shaduli', 'Anees', 'Muhammed Adnan', 'Muhammed Fayiz M.P'],
+    'SENIOR':           ['Sunain', 'Sanish', 'Yasir M', 'Sinan'],
   },
   ONAKKAD: {
-    'Lower Primary':   ['No Data'],
-    'Upper Primary':    ['Muhammed Sahal .K'],
-    'High School':      ['Hamid Afnan', 'Nadir Habeeb'],
-    'Higher Secondary': ['Muhammed Sinan K'],
-    'Junior':           ['Ajvad K', 'Sayyid Muhammed Fadil'],
-    'Senior':           ['Abdul Qader'],
+    'LOWER PRIMARY':   ['No Data'],
+    'UPPER PRIMARY':    ['Muhammed Sahal .K'],
+    'HIGH SCHOOL':      ['Hamid Afnan', 'Nadir Habeeb'],
+    'HIGHER SECONDARY': ['Muhammed Sinan K'],
+    'JUNIOR':           ['Ajvad K', 'Sayyid Muhammed Fadil'],
+    'SENIOR':           ['Abdul Qader'],
   },
   OZHUR: {
-    'Lower Primary':    ['No Data'],
-    'Upper Primary':    ['No Data'],
-    'High School':      ['No Data'],
-    'Higher Secondary': ['No Data'],
-    'Junior':           ['No Data'],
-    'Senior':           ['No Data'],
+    'LOWER PRIMARY':    ['No Data'],
+    'UPPER PRIMARY':    ['No Data'],
+    'HIGH SCHOOL':      ['No Data'],
+    'HIGHER SECONDARY': ['No Data'],
+    'JUNIOR':           ['No Data'],
+    'SENIOR':           ['No Data'],
   },
-  PULIPPARAMB: {
-    'Lower Primary':    ['Hamda', 'Ihsan', 'Jubair T', 'Lezin', 'Lubaba', 'Rabhan P'],
-    'Upper Primary':    ['Abdul Azeez', 'Bishr', 'Hafsa', 'Haseena', 'Shamveel', 'Shaz'],
-    'High School':      ['Ansif', 'Farhan', 'Hasnath', 'Mishal', 'Naseef', 'Rafiya', 'Razi', 'Shahal', 'Shaima', 'Shamveel', 'Shan'],
-    'Higher Secondary': ['Adhil', 'Ansif', 'Labeeb', 'Lubaba', 'Sana', 'Shamveel'],
-    'Junior':           ['Anshad', 'Asif', 'Fadhil', 'Hashir Shan', 'Junaid', 'Uvais'],
-    'Senior':           ['Sinan', 'Jamnas', 'Fasil', 'Sidheequ', 'Abid Shan', 'Anas', 'Shanib', 'Hashir'],
+  PULPPARAMB: {
+    'LOWER PRIMARY':    ['Hamda', 'Ihsan', 'Jubair T', 'Lezin', 'Lubaba', 'Rabhan P'],
+    'UPPER PRIMARY':    ['Abdul Azeez', 'Bishr', 'Hafsa', 'Haseena', 'Shamveel', 'Shaz'],
+    'HIGH SCHOOL':      ['Ansif', 'Farhan', 'Hasnath', 'Mishal', 'Naseef', 'Rafiya', 'Razi', 'Shahal', 'Shaima', 'Shamveel', 'Shan'],
+    'HIGHER SECONDARY': ['Adhil', 'Ansif', 'Labeeb', 'Lubaba', 'Sana', 'Shamveel'],
+    'JUNIOR':           ['Anshad', 'Asif', 'Fadhil', 'Hashir Shan', 'Junaid', 'Uvais'],
+    'SENIOR':           ['Sinan', 'Jamnas', 'Fasil', 'Sidheequ', 'Abid Shan', 'Anas', 'Shanib', 'Hashir'],
   },
   THALAKKATTUR: {
-    'Lower Primary':    ['Fathima Sherin', 'Salim', 'Shaha Fathima', 'Shahid', 'Shamil C', 'Ziyad'],
-    'Upper Primary':    ['Fayiha', 'Nasib VK', 'Shibil C', 'Shiful Ameen K', 'Swliha Fathima'],
-    'High School':      ['Adil V', 'Fathima Nishfa', 'Harshad', 'Rifwan', 'Sana', 'Shahma Sherin VV', 'Shebeeb', 'Ziyad K'],
-    'Higher Secondary': ['Fahmida C', 'Hasna T', 'Ihsan', 'Muhammad Sinan M.T', 'Shibin'],
-    'Junior':           ['Arif', 'Muhammed Najib', 'Sabith'],
-    'Senior':           ['Muhammad Sinan', 'Sainul Abid', 'Arshid', 'Muhsin', 'Adil Mubarak'],
+    'LOWER PRIMARY':    ['Fathima Sherin', 'Salim', 'Shaha Fathima', 'Shahid', 'Shamil C', 'Ziyad'],
+    'UPPER PRIMARY':    ['Fayiha', 'Nasib VK', 'Shibil C', 'Shiful Ameen K', 'Swliha Fathima'],
+    'HIGH SCHOOL':      ['Adil V', 'Fathima Nishfa', 'Harshad', 'Rifwan', 'Sana', 'Shahma Sherin VV', 'Shebeeb', 'Ziyad K'],
+    'HIGHER SECONDARY': ['Fahmida C', 'Hasna T', 'Ihsan', 'Muhammad Sinan M.T', 'Shibin'],
+    'JUNIOR':   ['Arif', 'Muhammed Najib', 'Sabith'],
+    'SENIOR':           ['Muhammad Sinan', 'Sainul Abid', 'Arshid', 'Muhsin', 'Adil Mubarak'],
   },
   VELLACHAL: {
-    'Lower Primary':    ['Mehrin', 'Rayan', 'Razan', 'Shaduli Rahman'],
-   'Upper Primary':    ['Fadi Mueenudheen', 'Fathima Naja', 'Mohammed', 'Mohammed Ayan', 'Zayan Sawaf'],
-    'High School':      ['Mohammed Shemin MK', 'Mohammed Shibili', 'Muhammed Rabeeh', 'Zayan Ibhrahim'],
-    'Higher Secondary': ['Masroor V.P', 'Nabeeha Nasrin'],
-    'Junior': ['Mohammed Hisham'],
-    'Senior':           ['Mohammed Shibili', 'Mohammed Irfan', 'Minhaj Ck', 'Ajmal'],
+    'LOWER PRIMARY':    ['Mehrin', 'Rayan', 'Razan', 'Shaduli Rahman'],
+   'UPPER PRIMARY':    ['Fadi Mueenudheen', 'Fathima Naja', 'Mohammed', 'Mohammed Ayan', 'Zayan Sawaf'],
+    'HIGH SCHOOL':      ['Mohammed Shemin MK', 'Mohammed Shibili', 'Muhammed Rabeeh', 'Zayan Ibhrahim'],
+    'HIGHER SECONDARY': ['Masroor V.P', 'Nabeeha Nasrin'],
+    'JUNIOR':   ['Mohammed Hisham'],
+    'SENIOR':           ['Mohammed Shibili', 'Mohammed Irfan', 'Minhaj Ck', 'Ajmal'],
   },
 };
 
@@ -903,7 +924,7 @@ function updateProgrammes() {
   progSel.innerHTML = '<option value="">Select Your Category</option>';
   document.getElementById('resultOutput').innerHTML = '<div class="result-placeholder">Select a Unit and Category to Find Participant</div>';
   if (unit) {
-    ['Lower Primary', 'Upper Primary', 'High School', 'Higher Secondary', 'Junior', 'Senior'].forEach(cat => {
+    ['LOWER PRIMARY', 'UPPER PRIMARY', 'HIGH SCHOOL', 'HIGHER SECONDARY', 'JUNIOR', 'SENIOR'].forEach(cat => {
       const opt = document.createElement('option');
       opt.value = cat; opt.textContent = cat;
       progSel.appendChild(opt);
